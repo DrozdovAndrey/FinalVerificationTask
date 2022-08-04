@@ -1,24 +1,50 @@
-﻿string[] array1 = new string[5] {"123", "23", "hello", "world", "res"};
-string[] array2 = new string[array1.Length];
-void SecondArrayWithIF(string[] array1, string[] array2)
+﻿/*
+Написать программу, которая из имеющегося массива строкформирует массив из строк, 
+длинна которых меньше либо равна 3 символам. Первоначальный массив можно вывести 
+с помощью клавиатуры, либо задать на старте выполнения алгоритма. При решении не 
+рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами.
+
+{"Hello", "2", "word", ":)"} -> {"2",":-)"}
+{"1234", "1567", "-2", "computer science"} -> {"-2"}
+{"Russia", "Denmark", "Kazan"} -> {}
+
+*/
+
+namespace ChoosingASpecialization
 {
-    int count = 0;
-    for (int i = 0; i < array1.Length; i++)
+    class FinalTask
     {
-    if(array1[i].Length <= 3)
+        static void Main(string[] args)
         {
-        array2[count] = array1[i];
-        count++;
+            string[] array1 = new string[]
+                        {"Hello", "2", "word", ":-)"}
+                        // {"1234", "1567", "-2", "computer science"}
+                        // {"Russia", "Denmark", "Kazan"}
+            ;
+            string[] array2 = new string[array1.Length];
+            FillStringArray(array1, array2);
+            PrintArray(array2);
+
+            void FillStringArray(string[] array1, string[] array2)
+            {
+                for (int i = 0; i < array1.Length; i++)
+                {
+                    if (array1[i].Length <= 3)
+                    {
+                        array2[i] = array1[i];
+                    }
+                }
+            }
+            
+            void PrintArray(string[] array)
+            {
+                for (int i = 0; i < array.Length; i++)
+                {
+                    Console.Write($"{array[i]} ");
+                }
+                Console.WriteLine();
+            }
+           
         }
     }
 }
-void PrintArray(string[] array)
-{
-    for (int i = 0; i < array.Length; i++)
-    {
-        Console.Write($"{array[i]} ");
-    }
-    Console.WriteLine();
-}
-SecondArrayWithIF(array1, array2);
-PrintArray(array2);
